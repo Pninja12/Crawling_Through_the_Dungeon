@@ -8,13 +8,13 @@ namespace Dungeon_Crawler
 {
     public class Controller
     {
-        View view;
-        Model model;
+        View view = new View();
+        Model model = new Model();
         public void MapGiver()
         {
             
             //Vai escolher aleatóriamente um mapa
-            model.mapName = "Map" + model.random.Next(1,3) + ".txt";
+            model.mapName = "Map" + model.random.Next(1,2) + ".txt";
             
 
             using StreamReader sr = new StreamReader(model.mapName);
@@ -50,12 +50,13 @@ namespace Dungeon_Crawler
             }
         }
 
+        //Lembrar: Y começa em cima e é a primeira lista
         public void MoveUp()
         {
-            if(model.map[model.playerLocation[0]][model.playerLocation[1] + 1] 
+            if(model.map[model.playerLocation[0]-1][model.playerLocation[1]] 
             != '|')
             {
-                model.playerLocation[1] += 2;
+                model.playerLocation[0] -= 2;
             }
             else{
                 view.YouCanot("move up!");
@@ -64,13 +65,70 @@ namespace Dungeon_Crawler
 
         public void MoveDown()
         {
-            if(model.map[model.playerLocation[0]][model.playerLocation[1] - 1] 
+            if (model.map[model.playerLocation[0] + 1][model.playerLocation[1]]
+            != '|')
+            {
+                model.playerLocation[0] += 2;
+            }
+            else
+            {
+                view.YouCanot("move down!");
+            }
+        }
+
+        //Lembrar: X começa à esquerda e é a segunda lista
+        public void MoveRight()
+        {
+            if (model.map[model.playerLocation[0]][model.playerLocation[1] + 1]
             != '|')
             {
                 model.playerLocation[1] += 2;
             }
-            else{
-                view.YouCanot("move down!");
+            else
+            {
+                view.YouCanot("move right!");
             }
+        }
+        public void MoveLeft()
+        {
+            if (model.map[model.playerLocation[0]][model.playerLocation[1] - 1]
+            != '|')
+            {
+                model.playerLocation[1] -= 2;
+            }
+            else
+            {
+                view.YouCanot("move left!");
+            }
+        }
+        
+        public void Game()
+        {
+            MapGiver();
+            Console.WriteLine("Where do you wanna move?");
+            while (true)
+            {
+                switch (Console.ReadLine())
+                {
+                    case "up":
+                        MoveUp();
+                        break;
+                    case "down":
+                        MoveDown();
+                        break;
+                    case "left":
+                        MoveLeft();
+                        break;
+                    case "right":
+                        MoveRight();
+                        break;
+                    default:
+                        Console.WriteLine("Unknown move");
+                        break;
+                }
+                Console.WriteLine(model.map[model.playerLocation[0]][model.playerLocation[1]]);
+            }
+            
+        }
     }
 }

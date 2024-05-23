@@ -9,7 +9,7 @@ namespace Dungeon_Crawler
     {
         public List<List<char>> map;
         public Random random= new Random();
-        public String mapName;
+        public String mapName = "";
         public int[] playerLocation;
     }
 }
