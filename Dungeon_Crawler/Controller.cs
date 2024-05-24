@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace Dungeon_Crawler
@@ -13,7 +14,7 @@ namespace Dungeon_Crawler
         public void MapGiver()
         {
             
-            //Vai escolher aleatóriamente um mapa
+            //Vai escolher aleatï¿½riamente um mapa
             model.mapName = "Maps/Map" + model.random.Next(1,2) + ".txt";
             
 
@@ -22,7 +23,7 @@ namespace Dungeon_Crawler
             List<char> temp = new List<char>();
             model.playerLocation = new int []{0,0};
 
-            //variáveis de suporte
+            //variï¿½veis de suporte
             int x = 0;
             int y = 0;
             string s;
@@ -43,14 +44,14 @@ namespace Dungeon_Crawler
                 }
                 //Adiciona cada lista a uma lista na horizontal (y)
                 model.map.Add(temp);
-                //apaga os conteudos da lista temporária
+                //apaga os conteudos da lista temporï¿½ria
                 temp = new List<char>();
                 y += 1;
                 x = 0;
             }
         }
 
-        //Lembrar: Y começa em cima e é a primeira lista
+        //Lembrar: Y comeï¿½a em cima e ï¿½ a primeira lista
         public void MoveUp()
         {
             if(model.map[model.playerLocation[0]-1][model.playerLocation[1]] 
@@ -76,7 +77,7 @@ namespace Dungeon_Crawler
             }
         }
 
-        //Lembrar: X começa à esquerda e é a segunda lista
+        //Lembrar: X comeï¿½a ï¿½ esquerda e ï¿½ a segunda lista
         public void MoveRight()
         {
             if (model.map[model.playerLocation[0]][model.playerLocation[1] + 1]
@@ -100,12 +101,17 @@ namespace Dungeon_Crawler
             {
                 view.YouCanot(" move left!");
             }
+            
         }
         
         public void Game()
         {
-            view.Welcome();
+            string n;
+            n = view.Welcome();
+            Character player = new Player(n);
             MapGiver();
+
+            player.Heal(10);
             
             while (true)
             {
@@ -132,5 +138,7 @@ namespace Dungeon_Crawler
             }
             
         }
+
+        
     }
 }
