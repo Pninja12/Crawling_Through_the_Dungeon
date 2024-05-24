@@ -27,5 +27,16 @@ namespace Dungeon_Crawler
                 Console.Clear();
             }
         }
+
+        //João altera isto!
+        public void Welcome()
+        {
+            Console.WriteLine("Welcome to the internet, have a look around");
+        }
+        //João altera isto! 
+        public void Goodbye()
+        {
+            Console.WriteLine("See ya");
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace Dungeon_Crawler
         {
             
             //Vai escolher aleatóriamente um mapa
-            model.mapName = "Map" + model.random.Next(1,2) + ".txt";
+            model.mapName = "Maps/Map" + model.random.Next(1,2) + ".txt";
             
 
             using StreamReader sr = new StreamReader(model.mapName);
@@ -59,7 +59,7 @@ namespace Dungeon_Crawler
                 model.playerLocation[0] -= 2;
             }
             else{
-                view.YouCanot("move up!");
+                view.YouCanot(" move up!");
             }
         }
 
@@ -72,7 +72,7 @@ namespace Dungeon_Crawler
             }
             else
             {
-                view.YouCanot("move down!");
+                view.YouCanot(" move down!");
             }
         }
 
@@ -86,7 +86,7 @@ namespace Dungeon_Crawler
             }
             else
             {
-                view.YouCanot("move right!");
+                view.YouCanot(" move right!");
             }
         }
         public void MoveLeft()
@@ -98,16 +98,18 @@ namespace Dungeon_Crawler
             }
             else
             {
-                view.YouCanot("move left!");
+                view.YouCanot(" move left!");
             }
         }
         
         public void Game()
         {
+            view.Welcome();
             MapGiver();
-            Console.WriteLine("Where do you wanna move?");
+            
             while (true)
             {
+                Console.WriteLine("Where do you wanna move?");
                 switch (Console.ReadLine())
                 {
                     case "up":
