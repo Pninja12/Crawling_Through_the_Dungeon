@@ -12,7 +12,7 @@ namespace Dungeon_Crawler
         public String mapName = "";
         public int[] playerLocation;
         public Character enemy1;
-        public Character player;
+        public Player player;
 
         
     }

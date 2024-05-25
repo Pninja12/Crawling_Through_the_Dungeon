@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Dungeon_Crawler
 {
-    public abstract class Jewlery : Item
+    public abstract class PotionsLevel : Item
     {
-        public int Type;
+        public int Level;
         
 
 

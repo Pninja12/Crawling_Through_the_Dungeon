@@ -8,6 +8,7 @@ namespace Dungeon_Crawler
     public class Player : Character
     {
         List<Item> inventory = new List<Item>{};
+        List<Jewlery> Currentbuff = new List<Jewlery>{};
         public Player(string name){
             Name = name;
             Health = 100; 
@@ -24,6 +25,50 @@ namespace Dungeon_Crawler
 
         public void PickUpItem(Item i) { 
             inventory.Add(i);     
+        }
+        public bool Hasbuff(){ 
+            if (Currentbuff.Count > 0) return true;
+            else return false;
+
+        }
+        public Jewlery Whatbuff(){ 
+            return Currentbuff.First();
+        }
+
+        public void AddBuff(Jewlery i) { 
+            Currentbuff.Add(i);
+            switch (i.Type) {
+                case 0:
+                    AttackPower += i.Value;
+                    break;
+                case 1:
+                    MaxHealth += i.Value;
+                    Health += i.Value;
+                    break;                 
+                case 2:
+                    Health += i.Value / 2;
+                    MaxHealth += i.Value / 2;
+                    AttackPower += i.Value / 2;
+                    break;
+            }
+        }
+
+        public void RemoveBuff(Jewlery i) { 
+            switch (i.Type) {
+                case 0:
+                    AttackPower -= i.Value;
+                    break;
+                case 1:
+                    MaxHealth -= i.Value;
+                    Health -= i.Value;
+                    break;                 
+                case 2:
+                    Health -= i.Value / 2;
+                    MaxHealth -= i.Value / 2;
+                    AttackPower -= i.Value / 2;
+                    break;
+            }
+            Currentbuff.Remove(i);
         }
 
         

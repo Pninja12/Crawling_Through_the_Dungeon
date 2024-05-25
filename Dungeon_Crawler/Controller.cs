@@ -131,6 +131,88 @@ namespace Dungeon_Crawler
                 }
             }
         }
+        public void VerifyItem(){
+            if(model.map[model.playerLocation[0]][model.playerLocation[1]] == '+'){
+                PickItem();
+            }
+        }
+
+        public void PickItem(){
+            int h = model.random.Next(1,7);
+            bool hasitem = false;
+            switch (h){
+                case 1:
+                    Jewlery o = new Ring();
+                    Console.WriteLine($"u just got a {o.Name} {o.description}");
+                    if(model.player.Hasbuff()){
+                        hasitem = true;
+                        Console.WriteLine($"u currently have a {model.player.Whatbuff().Name} {o.description}");
+                    }
+                    Console.WriteLine($"Would you like to use your new item?(yes or no)");
+                    switch(Console.ReadLine()){
+                        case "yes":
+                            if (hasitem){
+                                model.player.RemoveBuff(model.player.Whatbuff());
+                            }                  
+                            model.player.AddBuff(o);
+                            break;
+                    }
+                    
+                    break;
+                case 2:
+                    Jewlery i = new Necklace();
+                    Console.WriteLine($"u just got a {i.Name} {i.description}");
+                    if(model.player.Hasbuff()){
+                        hasitem = true;
+                        Console.WriteLine($"u currently have a {model.player.Whatbuff().Name} {i.description}");
+                    }
+                    Console.WriteLine($"Would you like to use your new item?(yes or no)");
+                    switch(Console.ReadLine()){
+                        case "yes":
+                            if (hasitem){
+                                model.player.RemoveBuff(model.player.Whatbuff());
+                            }                  
+                            model.player.AddBuff(i);
+                            break;
+                    }
+                    break;
+                case 3:
+                    Jewlery j = new Necklace();
+                    Console.WriteLine($"u just got a {j.Name} {j.description}");
+                    if(model.player.Hasbuff()){
+                        hasitem = true;
+                        Console.WriteLine($"u currently have a {model.player.Whatbuff().Name} {j.description}");
+                    }
+                    Console.WriteLine($"Would you like to use your new item?(yes or no)");
+                    switch(Console.ReadLine()){
+                        case "yes":
+                            if (hasitem){
+                                model.player.RemoveBuff(model.player.Whatbuff());
+                            }                  
+                            model.player.AddBuff(j);
+                            break;
+                    }
+                    break;
+                case 4:
+                    PotionsLevel k = new L1Potion();
+                    Console.WriteLine($"u just got a {k.Name} {k.description}");
+                    model.player.PickUpItem(k);
+                    break;
+                case 5:
+                    PotionsLevel p = new L2Potion();
+                    Console.WriteLine($"u just got a {p.Name} {p.description}");
+                    model.player.PickUpItem(p);
+                    break;
+                case 6:
+                    PotionsLevel b = new L3Potion();
+                    Console.WriteLine($"u just got a {b.Name} {b.description}");
+                    model.player.PickUpItem(b);
+                    break;
+
+
+            }
+            Console.WriteLine();
+        }
         
         public void Game()
         {
@@ -163,6 +245,8 @@ namespace Dungeon_Crawler
                         break;
                 }
                 verifyfight();
+                VerifyItem();
+                Console.WriteLine(model.player.Health + " " + model.player.AttackPower);
                 Console.WriteLine(model.map[model.playerLocation[0]][model.playerLocation[1]]);
             }
             

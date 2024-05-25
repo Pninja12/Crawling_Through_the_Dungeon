@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 
 namespace Dungeon_Crawler
 {
-    public class Colar : Jewlery
+    public class Necklace : Jewlery
     {
-        public Colar(string name){
-            Name = name;
+        public Necklace(){
+            Name = "Necklace";
             Value = 10;
             Type = 1;
+            description = "This item gives you 10 hp";
         }
 
     }
