@@ -129,6 +129,11 @@ namespace Dungeon_Crawler
                         Console.WriteLine("Unknown move");
                         break;
                 }
+                if (model.enemy1.Health <= 0){
+                    Console.WriteLine("Matou o inimigo");
+                    break;
+                }
+                
             }
         }
         public void VerifyItem(){
