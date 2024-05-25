@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 
 namespace Dungeon_Crawler
@@ -37,6 +38,25 @@ namespace Dungeon_Crawler
         public void Goodbye()
         {
             Console.WriteLine("See ya");
+        }
+
+        public string Do(string action = "")
+        {
+            if (action == "")
+            {
+                Console.WriteLine(action);
+            }
+            else
+            {
+                Console.WriteLine("What do you want to do next?\n-->");
+            }
+            return Console.ReadLine();
+                
+        }
+        //João altera isto!
+        public void Tutorial()
+        {
+
         }
     }
 }

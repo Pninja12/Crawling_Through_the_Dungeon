@@ -101,6 +101,15 @@ namespace Dungeon_Crawler
                 view.YouCanot(" move left!");
             }
         }
+
+        public void Action(string action)
+        {
+            if (action == "move")
+            {
+                view.Do();
+            }
+        }
+
         
         public void Game()
         {
