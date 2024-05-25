@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace Dungeon_Crawler
 {
-    public abstract class Item
+    public interface Jewlery
     {
-        public string Name{ get; set; }
-        public virtual int Value{ get; set; }
-        
+
     }
 }

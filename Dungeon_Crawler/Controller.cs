@@ -17,7 +17,6 @@ namespace Dungeon_Crawler
             //Vai escolher aleat�riamente um mapa
             model.mapName = "Maps/Map" + model.random.Next(1,2) + ".txt";
             
-
             using StreamReader sr = new StreamReader(model.mapName);
             model.map = new List<List<char>>();
             List<char> temp = new List<char>();
@@ -90,6 +89,7 @@ namespace Dungeon_Crawler
                 view.YouCanot(" move right!");
             }
         }
+
         public void MoveLeft()
         {
             if (model.map[model.playerLocation[0]][model.playerLocation[1] - 1]
@@ -100,18 +100,46 @@ namespace Dungeon_Crawler
             else
             {
                 view.YouCanot(" move left!");
+            }            
+        }
+
+        public void verifyfight(){
+            if(model.map[model.playerLocation[0]][model.playerLocation[1]] == '/'){
+                model.map[model.playerLocation[0]][model.playerLocation[1]] = '+';
+                fight();
             }
-            
+        }
+        public void fight(){
+            int h = model.random.Next(50,71);
+            int a = model.random.Next(10,16);
+            model.enemy1 = new Enemy("random Enemy",h,a);
+            Console.WriteLine("You found a " + model.enemy1);
+            while(true){
+                Console.WriteLine("What do you wanna do?(attack or heal)");
+                Console.WriteLine($"hp: {model.player.Health}");
+                switch (Console.ReadLine())
+                {
+                    case "heal":
+                        model.player.Heal(10);
+                        break;
+                    case "attack":
+                        model.player.Attack(model.enemy1);
+                        break;
+                    default:
+                        Console.WriteLine("Unknown move");
+                        break;
+                }
+            }
         }
         
         public void Game()
         {
             string n;
             n = view.Welcome();
-            Character player = new Player(n);
             MapGiver();
+            model.player = new Player(n);
 
-            player.Heal(10);
+            model.player.Heal(10);
             
             while (true)
             {
@@ -134,6 +162,7 @@ namespace Dungeon_Crawler
                         Console.WriteLine("Unknown move");
                         break;
                 }
+                verifyfight();
                 Console.WriteLine(model.map[model.playerLocation[0]][model.playerLocation[1]]);
             }
             

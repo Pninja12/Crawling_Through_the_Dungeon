@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace Dungeon_Crawler
 {
-    public class HpPotion : Item
+    public class Capacete : Item
     {
 
-        public HpPotion(string name, int value){
+        public Capacete(string name, int value){
             Name = name;
-            Value = value;
+            Value = 5;
         }
     }
 }

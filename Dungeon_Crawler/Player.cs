@@ -7,7 +7,7 @@ namespace Dungeon_Crawler
 {
     public class Player : Character
     {
-        Item[] inventory = new Item[9];
+        List<Item> inventory = new List<Item>{};
         public Player(string name){
             Name = name;
             Health = 100; 
@@ -16,19 +16,14 @@ namespace Dungeon_Crawler
         }
 
         public override void Heal(int h) { 
-            base.Heal(h);
+            base.Heal(10);
             if (Health > MaxHealth){
                 Health = MaxHealth;
             }
         }
 
         public void PickUpItem(Item i) { 
-            for (int j = 0; j < 9; j++) {
-                if (inventory[j] == null){
-                    inventory[j] = i;
-                }
-            }
-            
+            inventory.Add(i);     
         }
 
         
