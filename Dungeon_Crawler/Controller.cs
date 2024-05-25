@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace Dungeon_Crawler
@@ -13,16 +14,15 @@ namespace Dungeon_Crawler
         public void MapGiver()
         {
             
-            //Vai escolher aleatÛriamente um mapa
+            //Vai escolher aleatùriamente um mapa
             model.mapName = "Maps/Map" + model.random.Next(1,2) + ".txt";
             
-
             using StreamReader sr = new StreamReader(model.mapName);
             model.map = new List<List<char>>();
             List<char> temp = new List<char>();
             model.playerLocation = new int []{0,0};
 
-            //vari·veis de suporte
+            //variùveis de suporte
             int x = 0;
             int y = 0;
             string s;
@@ -43,14 +43,14 @@ namespace Dungeon_Crawler
                 }
                 //Adiciona cada lista a uma lista na horizontal (y)
                 model.map.Add(temp);
-                //apaga os conteudos da lista tempor·ria
+                //apaga os conteudos da lista temporùria
                 temp = new List<char>();
                 y += 1;
                 x = 0;
             }
         }
 
-        //Lembrar: Y comeÁa em cima e È a primeira lista
+        //Lembrar: Y comeùa em cima e ù a primeira lista
         public void MoveUp()
         {
             if(model.map[model.playerLocation[0]-1][model.playerLocation[1]] 
@@ -76,7 +76,7 @@ namespace Dungeon_Crawler
             }
         }
 
-        //Lembrar: X comeÁa ‡ esquerda e È a segunda lista
+        //Lembrar: X comeùa ù esquerda e ù a segunda lista
         public void MoveRight()
         {
             if (model.map[model.playerLocation[0]][model.playerLocation[1] + 1]
@@ -89,6 +89,7 @@ namespace Dungeon_Crawler
                 view.YouCanot(" move right!");
             }
         }
+
         public void MoveLeft()
         {
             if (model.map[model.playerLocation[0]][model.playerLocation[1] - 1]
@@ -99,22 +100,17 @@ namespace Dungeon_Crawler
             else
             {
                 view.YouCanot(" move left!");
-            }
+            }            
         }
-
-        public void Action(string action)
-        {
-            if (action == "move")
-            {
-                view.Do();
-            }
-        }
-
         
         public void Game()
         {
-            view.Welcome();
+            string n;
+            n = view.Welcome();
             MapGiver();
+            model.player = new Player(n);
+
+            model.player.Heal(10);
             
             while (true)
             {
@@ -137,9 +133,14 @@ namespace Dungeon_Crawler
                         Console.WriteLine("Unknown move");
                         break;
                 }
+                verifyfight();
+                VerifyItem();
+                Console.WriteLine(model.player.Health + " " + model.player.AttackPower);
                 Console.WriteLine(model.map[model.playerLocation[0]][model.playerLocation[1]]);
             }
             
         }
+
+        
     }
 }

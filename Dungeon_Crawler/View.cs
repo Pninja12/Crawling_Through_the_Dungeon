@@ -13,7 +13,7 @@ namespace Dungeon_Crawler
             Console.WriteLine("You can't" + sorry);
         }
 
-        //Faz um ciclo para imprimir vários enters ou apagar o terminal
+        //Faz um ciclo para imprimir vï¿½rios enters ou apagar o terminal
         public void Enter_Delete(int a)
         {
             if(a != 0)
@@ -29,12 +29,19 @@ namespace Dungeon_Crawler
             }
         }
 
-        //João altera isto!
-        public void Welcome()
+
+
+        //Joï¿½o altera isto!
+        public string Welcome()
         {
-            Console.WriteLine("Welcome to the internet, have a look around");
+            string a = "";
+            Console.WriteLine("Welcome to the internet");
+            Console.WriteLine("What is your name?");
+            a = Console.ReadLine();
+            Console.WriteLine("have a look around");
+            return a;
         }
-        //João altera isto! 
+        //Joï¿½o altera isto! 
         public void Goodbye()
         {
             Console.WriteLine("See ya");
