@@ -11,7 +11,9 @@ namespace Dungeon_Crawler
         public Random random= new Random();
         public String mapName = "";
         public int[] playerLocation;
-
+        public List<Character> enemies;
+        public Player player;
+        public string answer = "";
         
     }
 }

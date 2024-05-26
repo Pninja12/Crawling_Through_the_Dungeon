@@ -10,11 +10,11 @@ namespace Dungeon_Crawler
     {
         public void YouCanot(string sorry)
         {
-            Console.WriteLine("You can't" + sorry);
+            Console.WriteLine("You can't " + sorry);
         }
 
         //Faz um ciclo para imprimir v�rios enters ou apagar o terminal
-        public void Enter_Delete(int a)
+        public void Enter_Delete(int a = 0)
         {
             if(a != 0)
             {
@@ -35,7 +35,7 @@ namespace Dungeon_Crawler
         public string Welcome()
         {
             string a = "";
-            Console.WriteLine("Welcome to the internet");
+            Console.WriteLine("Welcome to the Dungeon Crawling Experience");
             Console.WriteLine("What is your name?");
             a = Console.ReadLine();
             Console.WriteLine("have a look around");
@@ -64,6 +64,46 @@ namespace Dungeon_Crawler
         public void Tutorial()
         {
 
+        }
+
+        public void Memories()
+        {
+            Console.WriteLine("This place looks familiar...");
+        }
+
+        public void FindingEnemy(string enemy)
+        {
+            Console.WriteLine("You found a", enemy);
+        }
+
+        public void StartBattle()
+        {
+            Console.WriteLine("The battle starts, here are your opponents:");
+        }
+        public string BattleMenu(Player player)
+        {
+            Console.WriteLine($"It's your turn");
+            Console.WriteLine("What do you wanna do?(attack or heal)");
+            Console.WriteLine($"hp: {player.Health}");
+
+            return Answer();
+        }
+
+        public void ReadProof()
+        {
+            Console.WriteLine("Click ENTER to proceed...");
+            Console.ReadLine();
+        }
+
+        public void EnemyTurn(string name)
+        {
+            Console.WriteLine($"It's {name}'s turn");
+        }
+
+        public string Answer()
+        {
+            Console.WriteLine("\n-->");
+            return Console.ReadLine();
         }
     }
 }

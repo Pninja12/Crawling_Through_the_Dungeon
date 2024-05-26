@@ -10,8 +10,8 @@ namespace Dungeon_Crawler
 
         public L2Potion(){
             Name = "Rare Potion";
-            Value = 10;
-            Level = 1;
+            Value = 40;
+            Level = 2;
             description = "This item restores you 40 hp";
         }
     }

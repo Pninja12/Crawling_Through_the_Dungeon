@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Dungeon_Crawler
 {
-    public class Capacete : Jewlery
+    public class Capacete : Jewelry
     {
 
         public Capacete(){

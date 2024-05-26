@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Dungeon_Crawler
 {
-    public class Ring : Jewlery
+    public class Ring : Jewelry
     {
 
         public Ring(){

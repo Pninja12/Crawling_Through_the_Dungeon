@@ -10,7 +10,7 @@ namespace Dungeon_Crawler
 
         public L1Potion(){
             Name = "Common Potion";
-            Value = 10;
+            Value = 20;
             Level = 1;
             description = "This item restores you 20 hp";
         }

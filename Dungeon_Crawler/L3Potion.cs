@@ -10,7 +10,7 @@ namespace Dungeon_Crawler
 
         public L3Potion(){
             Name = "Mythic Potion";
-            Value = 10;
+            Value = 60;
             Level = 1;
             description = "This item restores you 60 hp";
         }

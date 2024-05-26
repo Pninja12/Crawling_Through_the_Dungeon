@@ -7,6 +7,7 @@ namespace Dungeon_Crawler
 {
     public class Enemy : Character
     {
+        public Random random;
         public Enemy(string name, int health, int attackPower){
             Name = name;
             Health = health; 
