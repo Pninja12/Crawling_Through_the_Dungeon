@@ -54,6 +54,7 @@ namespace Dungeon_Crawler
         //Lembrar: Y comeùa em cima e ù a primeira lista
         public void MoveUp()
         {
+            //verifica se o jogador pode mexer-se
             if(model.map[model.playerLocation[0]-1][model.playerLocation[1]] 
             != '|')
             {
@@ -66,6 +67,7 @@ namespace Dungeon_Crawler
 
         public void MoveDown()
         {
+            //verifica se o jogador pode mexer-se
             if (model.map[model.playerLocation[0] + 1][model.playerLocation[1]]
             != '|')
             {
@@ -80,6 +82,7 @@ namespace Dungeon_Crawler
         //Lembrar: X comeùa ù esquerda e ù a segunda lista
         public void MoveRight()
         {
+            //verifica se o jogador pode mexer-se
             if (model.map[model.playerLocation[0]][model.playerLocation[1] + 1]
             != '|')
             {
@@ -93,6 +96,7 @@ namespace Dungeon_Crawler
 
         public void MoveLeft()
         {
+            //verifica se o jogador pode mexer-se
             if (model.map[model.playerLocation[0]][model.playerLocation[1] - 1]
             != '|')
             {
@@ -108,6 +112,7 @@ namespace Dungeon_Crawler
         public void VerifyPlace()
         {
             view.Enter_Delete();
+            //troca locais por locais j· visitados
             if (model.map[model.playerLocation[0]]
             [model.playerLocation[1]] == '/')
             {
@@ -148,6 +153,7 @@ namespace Dungeon_Crawler
         }
         public bool Fight()
         {
+            //cria os inimigos
             WhichEnemy();
             view.FindingEnemy(model.enemies);
 
@@ -200,13 +206,15 @@ namespace Dungeon_Crawler
                     model.enemies.Remove(model.enemiesToKill[i]);
                     model.enemiesKilled++;
                 }
-
+                //turno de ataque dos inimigos
                 for(int i = 0; i < model.enemies.Count; i++)
                 {
                     view.EnemyTurn(model.enemies[i].Name,
                      model.enemies[i].AttackPower);
                     model.player.Health -= model.enemies[i].AttackPower;
                 }
+                //se o jogador morrer
+
                 if(model.player.Health <= 0)
                 {
                     return true;
@@ -221,6 +229,7 @@ namespace Dungeon_Crawler
         {
             while(true)
             {
+                //mostra inventario
                 view.ShowInventory(model.player);
                 model.answer = view.Answer();
                 if (int.Parse(model.answer) < model.player.inventory.Count)
@@ -245,6 +254,7 @@ namespace Dungeon_Crawler
         {
             while(true)
             {
+                //mostra inimigos
                 view.ShowEnemies(model.enemies);
                 model.answer = view.Answer();
                 if (int.Parse(model.answer) < model.enemies.Count)
