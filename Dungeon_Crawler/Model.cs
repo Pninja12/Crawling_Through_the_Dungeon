@@ -14,6 +14,12 @@ namespace Dungeon_Crawler
         public List<Character> enemies;
         public Player player;
         public string answer = "";
+        public bool hasItem;
+        public bool gameOver = false;
+        public int enemiesKilled = 0;
+
+        //suporte
+        public List<Character> enemiesToKill;
         
     }
 }

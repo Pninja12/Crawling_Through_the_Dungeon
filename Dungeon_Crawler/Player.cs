@@ -9,7 +9,7 @@ namespace Dungeon_Crawler
     {
         public List<Item> inventory = new List<Item>{};
         List<Jewelry> Currentbuff = new List<Jewelry>{};
-        public Player(string name){
+        public Player(string name = "" ){
             Name = name;
             Health = 100; 
             MaxHealth = 100;
@@ -27,15 +27,6 @@ namespace Dungeon_Crawler
             inventory.Add(i);     
         }
 
-        public void ShowInventory()
-        {
-            int contagem = new int();
-            foreach(Item item in inventory)
-            {   
-                Console.WriteLine($"[{contagem}]{item.Name}: restores {item.Value}Hp");
-                contagem++;
-            }
-        }
 
         public bool Hasbuff(){ 
             if (Currentbuff.Count > 0) return true;

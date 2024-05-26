@@ -28,19 +28,6 @@ namespace Dungeon_Crawler
                 Console.Clear();
             }
         }
-
-
-
-        //Joï¿½o altera isto!
-        public string Welcome()
-        {
-            string a = "";
-            Console.WriteLine("Welcome to the Dungeon Crawling Experience");
-            Console.WriteLine("What is your name?");
-            a = Console.ReadLine();
-            Console.WriteLine("have a look around");
-            return a;
-        }
         //Joï¿½o altera isto! 
         public void Goodbye()
         {
@@ -66,14 +53,20 @@ namespace Dungeon_Crawler
 
         }
 
-        public void Memories()
+        public void Memories(bool verdade = false)
         {
-            Console.WriteLine("This place looks familiar...");
+            if (verdade)
+                Console.WriteLine("A sala está vazia");
+            else
+                Console.WriteLine("This place looks familiar...");
         }
 
-        public void FindingEnemy(string enemy)
+        public void FindingEnemy(List<Character> enemies)
         {
-            Console.WriteLine("You found a", enemy);
+            for(int i = 0; i < enemies.Count; i++)
+            {
+                Console.WriteLine($"You found a {enemies[i].Name}");
+            }
         }
 
         public void StartBattle()
@@ -95,15 +88,82 @@ namespace Dungeon_Crawler
             Console.ReadLine();
         }
 
-        public void EnemyTurn(string name)
+        public void EnemyTurn(string name, int damage)
         {
             Console.WriteLine($"It's {name}'s turn");
+            Console.WriteLine($"\n{name} deals {damage} of damage");
         }
 
         public string Answer()
         {
-            Console.WriteLine("\n-->");
+            Console.Write("\n-->");
             return Console.ReadLine();
         }
+
+        public void ShowEnemies(List<Character> enemies)
+        {
+            Console.WriteLine("Choose which to attack:");
+            for(int i = 0; i < enemies.Count; i++)
+            {
+                Console.Write($"[{i}]{enemies[i].Name}: {enemies[i].Health}\n");
+            }
+        }
+        public void ShowInventory(Player player)
+        {
+            Console.WriteLine("Choose which to consume:");
+            for(int i = 0; i < player.inventory.Count; i++)
+            {
+                Console.WriteLine($"[{i}]{player.inventory[i].Name}: " +
+                $"restores {player.inventory[i].Value}Hp");
+            }
+            
+        }
+
+        public void Healed(int value)
+        {
+            Console.WriteLine($"You healed {value}");
+        }
+
+        public void EnemyKilled(string name)
+        {
+            Console.WriteLine($"You killed {name}");
+        }
+
+        public void YouWin(string rest)
+        {
+            Console.WriteLine($"Congratulations! You win " + rest);
+        }
+
+        public void YouLost(string rest)
+        {
+            Console.WriteLine($"You lost " + rest);
+        }
+
+        public void End(bool answer,int points = 0)
+        {
+            if(!answer)                
+                Console.WriteLine("Want to end your adventure?(yes/no)");
+
+            else      
+            {
+                Console.Write("Here's your score\nEnemies killed: ");
+                Console.WriteLine(points);
+                ReadProof();
+            }         
+                
+        }
+
+        public void Continue()
+        {
+            Console.Write("Do you want to continue your adventures?(yes/no)\n");
+        }
+
+        public void Menu()
+        {
+            Console.WriteLine("Welcome to the Dungeon Crawling Experience");
+            Console.Write("Choose and option(play,tutorial,exit):");
+            Enter_Delete(3);
+        }
+        
     }
 }

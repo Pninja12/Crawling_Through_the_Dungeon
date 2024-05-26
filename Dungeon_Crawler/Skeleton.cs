@@ -11,8 +11,8 @@ namespace Dungeon_Crawler
         base(name, health, attackPower)
         {
             base.Name = name;
-            base.Health = health + random.Next(20, 50);
-            base.AttackPower = attackPower + random.Next(10, 29);
+            base.Health = health;
+            base.AttackPower = attackPower;
 
         }
     }
