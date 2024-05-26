@@ -15,7 +15,7 @@ namespace Dungeon_Crawler
         public void MapGiver()
         {
             
-            //Vai escolher aleatùriamente um mapa
+            //Vai escolher aleatÔøΩriamente um mapa
             model.mapName = "Maps/Map" + model.random.Next(1,2) + ".txt";
             
             using StreamReader sr = new StreamReader(model.mapName);
@@ -23,7 +23,7 @@ namespace Dungeon_Crawler
             List<char> temp = new List<char>();
             model.playerLocation = new int []{0,0};
 
-            //variùveis de suporte
+            //variÔøΩveis de suporte
             int x = 0;
             int y = 0;
             string s;
@@ -44,14 +44,14 @@ namespace Dungeon_Crawler
                 }
                 //Adiciona cada lista a uma lista na horizontal (y)
                 model.map.Add(temp);
-                //apaga os conteudos da lista temporùria
+                //apaga os conteudos da lista temporÔøΩria
                 temp = new List<char>();
                 y += 1;
                 x = 0;
             }
         }
 
-        //Lembrar: Y comeùa em cima e ù a primeira lista
+        //Lembrar: Y comeÔøΩa em cima e ÔøΩ a primeira lista
         public void MoveUp()
         {
             //verifica se o jogador pode mexer-se
@@ -79,7 +79,7 @@ namespace Dungeon_Crawler
             }
         }
 
-        //Lembrar: X comeùa ù esquerda e ù a segunda lista
+        //Lembrar: X comeÔøΩa ÔøΩ esquerda e ÔøΩ a segunda lista
         public void MoveRight()
         {
             //verifica se o jogador pode mexer-se
@@ -112,7 +112,7 @@ namespace Dungeon_Crawler
         public void VerifyPlace()
         {
             view.Enter_Delete();
-            //troca locais por locais j· visitados
+            //troca locais por locais jÔøΩ visitados
             if (model.map[model.playerLocation[0]]
             [model.playerLocation[1]] == '/')
             {
@@ -146,7 +146,7 @@ namespace Dungeon_Crawler
                 model.answer = view.Answer();
                 if (model.answer == "yes")
                 {
-                    view.End(true);
+                    view.End(true,model.enemiesKilled);
                     model.gameOver = true;
                 }
             }
@@ -190,7 +190,7 @@ namespace Dungeon_Crawler
                     
                     view.Enter_Delete();
                 }
-                //verifica se inimigo est· morto
+                //verifica se inimigo estÔøΩ morto
                 model.enemiesToKill = new List<Character>{};
                 for(int i = 0; i < model.enemies.Count; i++)
                 {
@@ -217,6 +217,7 @@ namespace Dungeon_Crawler
 
                 if(model.player.Health <= 0)
                 {
+                    view.YouLost("the game");
                     return true;
                 }
                 
@@ -470,7 +471,7 @@ namespace Dungeon_Crawler
                     VerifyPlace();
                     if (model.gameOver)
                     {
-                        view.YouLost("the game");
+
                         break;
                     }
                 }

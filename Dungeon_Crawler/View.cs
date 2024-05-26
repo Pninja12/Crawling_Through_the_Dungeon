@@ -47,18 +47,48 @@ namespace Dungeon_Crawler
             return Console.ReadLine();
                 
         }
-        //João altera isto!
+
         public void Tutorial()
         {
-
+            Enter_Delete();
+            Console.Write("Description:\nThis is a single player game.\n");
+            Console.Write("You play as an adventurer that is exploring");
+            Console.Write(" a dungeon trying to loot any treasure he finds.\n");
+            Console.WriteLine("There's 4 types of different rooms:");
+            Console.WriteLine("-entrance/exit");
+            Console.WriteLine("-enemy room");
+            Console.WriteLine("-treasure room");
+            Console.WriteLine("-empty room\n");
+            ReadProof();
+            Enter_Delete();
+            Console.Write("Objective:\nThe objective");
+            Console.Write(" is to kill the most enemies before returning");
+            Console.WriteLine(" to the starting room to exit the dungeon.\n");
+            ReadProof();
+            Enter_Delete();
+            Console.Write("How to Play:\nThe game starts with the player in ");
+            Console.Write("the entrance room.\nYou can input the following ");
+            Console.WriteLine("commands in any room:");
+            Console.WriteLine("-\"up\", to go to the room above;");
+            Console.WriteLine("-\"down\", to go to the room below;");
+            Console.WriteLine("-\"left\", to go to the room to the left;");
+            Console.WriteLine("-\"right\", to go to the room to the right;\n");
+            Console.Write("If there is a door in the direction you chose");
+            Console.WriteLine(", you move to that room.\n");
+            Console.Write("If you enter a enemy room, the battle begins and ");
+            Console.WriteLine("you can input the following commands:");
+            Console.WriteLine("-\"attack\", to attack the enemy");
+            Console.WriteLine("-\"heal\", to use one of the heal potions\n");
+            ReadProof();
+            Enter_Delete();
         }
 
         public void Memories(bool verdade = false)
         {
             if (verdade)
-                Console.WriteLine("A sala está vazia");
+                Console.WriteLine("The room is empty.");
             else
-                Console.WriteLine("This place looks familiar...");
+                Console.WriteLine("You have already been to this room...");
         }
 
         public void FindingEnemy(List<Character> enemies)
@@ -76,8 +106,8 @@ namespace Dungeon_Crawler
         public string BattleMenu(Player player)
         {
             Console.WriteLine($"It's your turn");
-            Console.WriteLine("What do you wanna do?(attack or heal)");
-            Console.WriteLine($"hp: {player.Health}");
+            Console.WriteLine("What do you want to do?(attack or heal)");
+            Console.WriteLine($"HP: {player.Health}");
 
             return Answer();
         }
@@ -102,7 +132,7 @@ namespace Dungeon_Crawler
 
         public void ShowEnemies(List<Character> enemies)
         {
-            Console.WriteLine("Choose which to attack:");
+            Console.WriteLine("Choose which enemy to attack:");
             for(int i = 0; i < enemies.Count; i++)
             {
                 Console.Write($"[{i}]{enemies[i].Name}: {enemies[i].Health}\n");
@@ -110,7 +140,7 @@ namespace Dungeon_Crawler
         }
         public void ShowInventory(Player player)
         {
-            Console.WriteLine("Choose which to consume:");
+            Console.WriteLine("Choose which item to consume:");
             for(int i = 0; i < player.inventory.Count; i++)
             {
                 Console.WriteLine($"[{i}]{player.inventory[i].Name}: " +
@@ -121,7 +151,7 @@ namespace Dungeon_Crawler
 
         public void Healed(int value)
         {
-            Console.WriteLine($"You healed {value}");
+            Console.WriteLine($"You healed {value} HP");
         }
 
         public void EnemyKilled(string name)
@@ -141,12 +171,15 @@ namespace Dungeon_Crawler
 
         public void End(bool answer,int points = 0)
         {
-            if(!answer)                
-                Console.WriteLine("Want to end your adventure?(yes/no)");
+            if(!answer)   
+            {
+                Console.Write("Want to exit the dungeon ");
+                Console.WriteLine("and end your adventure?(yes/no)");
+            }             
 
             else      
             {
-                Console.Write("Here's your score\nEnemies killed: ");
+                Console.Write("Here's your score:\nEnemies killed: ");
                 Console.WriteLine(points);
                 ReadProof();
             }         
@@ -155,14 +188,15 @@ namespace Dungeon_Crawler
 
         public void Continue()
         {
-            Console.Write("Do you want to continue your adventures?(yes/no)\n");
+            Console.Write("Do you want to restart your adventure?(yes/no)\n");
         }
 
         public void Menu()
         {
-            Console.WriteLine("Welcome to the Dungeon Crawling Experience");
-            Console.Write("Choose and option(play,tutorial,exit):");
-            Enter_Delete(3);
+            Enter_Delete();
+            Console.WriteLine("Welcome to the Dungeon Crawling Experience!\n");
+            Console.Write("Choose and option(play, tutorial, exit):");
+            Enter_Delete(1);
         }
         
     }
